@@ -13,13 +13,17 @@ function results(responseJson){
         responseJson.data[i].name;
         responseJson.data[i].description;
         responseJson.data[i].url;
+        let latLong= responseJson.data[i].latLong;
+        let location1= latLong.replace('lat:', '');
+        let location2= location1.replace('long:', '');
+        let location= location2.replace(/\s/g, '')
         $('.parks').append(
            `<h1>${responseJson.data[i].name}</h1><br>`,
            `<p>${responseJson.data[i].description}</p>`,
-           `<a href= ${responseJson.data[i].url}> Link </a>`
+           `<a href= ${responseJson.data[i].url}> Link </a>`,
         )}
-
 }
+
 
 function renderSubmit(){
     $('form').on('submit', function (event){
